@@ -1,0 +1,201 @@
+﻿@*@model IEnumerable<WebMVC.Models.Category>
+
+    @{
+        ViewBag.Title = "Category Details";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="container mt-4">
+
+        <div class="mb-3">
+
+            <div class="container mt-4">
+                <h2 class="mb-4">Category Details</h2>
+
+                <button class="mb-3">
+                    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary btn-lg mb-3" })
+                </button>
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().Category_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First().Category_Name)
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category_Name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Category_Id }, new { @class = "btn btn-warning btn-sm" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Category_Id }, new { @class = "btn btn-info btn-sm" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Category_Id }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>*@
+
+@model IEnumerable<WebMVC.Models.Category>
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Container Styling */
+    .container {
+        max-width: 1200px; /* Set a max width for the container */
+    }
+
+    /* Button Styling */
+    .btn-create-new {
+        background-color: #28a745; /* Primary blue color for button */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 0.75rem 1.5rem; /* Padding for button size */
+        font-size: 1rem; /* Font size */
+        margin-bottom: 1rem; /* Space below the button */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Ensure button styling */
+    }
+
+        .btn-create-new:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white; /* Maintain white text color on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+
+    /* Table Styling */
+    .table {
+        width: 100%; /* Full width of the container */
+        margin-bottom: 1rem; /* Space below the table */
+        border-collapse: collapse; /* Remove space between borders */
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9; /* Stripe color */
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6; /* Border color for table */
+    }
+
+    .table th,
+    .table td {
+        padding: 0.75rem; /* Padding inside cells */
+        vertical-align: top; /* Align content to top */
+        border-top: 1px solid #dee2e6; /* Border color for cells */
+    }
+
+    .table th {
+        background-color: #007bff; /* Blue background for table header */
+        color: white; /* White text color */
+        text-align: center; /* Center align text */
+    }
+
+    .table td {
+        text-align: center; /* Center align text */
+    }
+
+    /* Button Styles for Table Actions */
+    .btn-sm {
+        font-size: 0.875rem; /* Slightly smaller font size for buttons */
+    }
+
+    .btn-warning {
+        background-color: #ffc107; /* Warning color */
+        border-color: #ffc107; /* Border color matching button color */
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+            border-color: #d39e00; /* Darker border color on hover */
+        }
+
+    .btn-info {
+        background-color: #17a2b8; /* Info color */
+        border-color: #17a2b8; /* Border color matching button color */
+    }
+
+        .btn-info:hover {
+            background-color: #138496; /* Darker teal on hover */
+            border-color: #117a8b; /* Darker border color on hover */
+        }
+
+    .btn-danger {
+        background-color: #dc3545; /* Danger color */
+        border-color: #dc3545; /* Border color matching button color */
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+            border-color: #bd2130; /* Darker border color on hover */
+        }
+</style>
+
+<div class="container mt-4">
+
+    <div class="mb-3">
+        <h2 class="mb-4">Category Details</h2>
+
+        <p>
+            <a href="@Url.Action("Create", "Category")" class="btn btn-create-new">
+                Create New
+            </a>
+        </p>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Category_Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Category_Name)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category_Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category_Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Category_Id }, new { @class = "btn btn-warning btn-sm" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Category_Id }, new { @class = "btn btn-info btn-sm" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Category_Id }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+﻿@model WebMVC.Models.Brand
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Brand Details</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Brand Information</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Brand_Id)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Brand_Id)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Brand_Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Brand_Name)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Brand_Id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>

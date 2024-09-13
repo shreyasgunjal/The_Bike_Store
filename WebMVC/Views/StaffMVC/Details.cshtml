@@ -1,0 +1,193 @@
+﻿@model WebMVC.Models.Staff
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .container {
+            margin-top: 20px;
+            max-width: 100% !important;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 0.25rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.25rem;
+            border-bottom: 2px solid #0056b3;
+        }
+
+        .card-body dt {
+            font-weight: bold;
+        }
+
+        .card-body dd {
+            margin-bottom: 10px;
+        }
+
+        .btn-custom {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+            }
+
+            .btn-custom:focus, .btn-custom:active {
+                box-shadow: none;
+                outline: none;
+                transform: translateY(0);
+            }
+
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 10px; /* Add margin-left to create space between buttons */
+        }
+
+            .btn-secondary-custom:hover {
+                background-color: #5a6268;
+                transform: translateY(-2px);
+            }
+
+            .btn-secondary-custom:focus, .btn-secondary-custom:active {
+                box-shadow: none;
+                outline: none;
+                transform: translateY(0);
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Staff Details
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Staff_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Staff_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.First_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.First_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Last_Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Last_Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Active)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Active)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Store_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Store_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Manager_Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Manager_Id)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Password)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.Staff_Id })class="btn btn-custom">Edit |*@
+                <a href="@Url.Action("Edit", new { id = Model.Staff_Id})" class="btn btn-custom">Edit</a>
+
+                <a href="@Url.Action("Index")" class="btn btn-secondary-custom">Back to List</a>
+            </p>

@@ -1,0 +1,49 @@
+﻿@model WebMVC.Models.Brand
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Delete Brand</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Delete Confirmation</h4>
+        </div>
+        <div class="card-body">
+            <h3 class="text-danger">Are you sure you want to delete this?</h3>
+
+            <div class="mb-4">
+                <h4>Brand Details</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Brand_Id)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Brand_Id)
+                    </dd>
+
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Brand_Name)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Brand_Name)
+                    </dd>
+                </dl>
+            </div>
+
+            @using (Html.BeginForm("Delete", "BrandMVC", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger mr-2">Delete</button>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

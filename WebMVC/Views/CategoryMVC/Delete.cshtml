@@ -1,0 +1,88 @@
+﻿@model WebMVC.Models.Category
+
+@{
+    ViewBag.Title = "Delete Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <h3>Are you sure you want to delete this category?</h3>
+    <div class="category-details">
+        <h4>Category Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Category_Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category_Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category_Name)
+            </dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .category-details {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dl-horizontal dt {
+        float: left;
+        width: 150px;
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 160px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+
+        .form-actions .btn {
+            margin-right: 10px;
+        }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+</style>

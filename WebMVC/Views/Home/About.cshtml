@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "About Us";
+    ViewBag.Message = "Discover Quality and Service at Our Bike Store";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .font-weight-bold {
+            font-weight: 700;
+        }
+
+        .section {
+            padding: 2rem 0;
+        }
+
+            .section p {
+                margin-bottom: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <header>
+            <h2 class="display-4" id="title">@ViewBag.Title</h2>
+            <p class="lead">@ViewBag.Message</p>
+        </header>
+
+        <main>
+            <div class="row section">
+                <div class="col-md-8 offset-md-2">
+                    <p class="lead">Welcome to our Bike Store, where quality and customer satisfaction are our top priorities. We are dedicated to offering a wide range of products and services that cater to all cycling enthusiasts.</p>
+
+                    <p>At our store, you'll find a diverse selection of products, from top-notch accessories and gear to expert advice and personalized service. Our team is passionate about cycling and committed to helping you find exactly what you need to enhance your riding experience.</p>
+
+                    <p>We pride ourselves on providing exceptional customer service and building lasting relationships with our clients. Whether you're a seasoned cyclist or just starting out, our knowledgeable staff is here to assist you with all your cycling needs.</p>
+
+                    <p>In addition to our extensive product range, we offer various services including repairs, maintenance, and custom fittings. Our goal is to ensure that every customer leaves our store with the confidence that they have made the right choice.</p>
+
+                    <p>We invite you to visit us and experience the difference for yourself. Thank you for considering our store for your cycling needs!</p>
+
+                    <p class="font-weight-bold">We look forward to serving you!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

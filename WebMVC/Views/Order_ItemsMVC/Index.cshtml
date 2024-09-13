@@ -1,0 +1,130 @@
+﻿@model IEnumerable<WebMVC.Models.Order_Items>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* General container styling */
+    .container {
+        padding-top: 21px !important;
+        max-width: 1200px; /* Set a max width for the container */
+    }
+
+    /* Styling for cards */
+    .card {
+        border: none; /* Remove default border */
+        border-radius: 12px; /* Rounded corners for the card */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for elevation */
+        overflow: hidden; /* Ensure content doesn’t overflow */
+        transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+    }
+
+        .card:hover {
+            transform: scale(1.03); /* Slightly enlarge the card on hover */
+        }
+
+    .card-header {
+        background-color: #007bff; /* Blue background for header */
+        color: white; /* White text color */
+        padding: 1rem; /* Padding inside the header */
+        font-size: 1.25rem; /* Larger font size for title */
+        text-align: center; /* Center align text */
+    }
+
+    .card-body {
+        padding: 1.5rem; /* Increased padding for the card body */
+        background-color: #f8f9fa; /* Light background color */
+    }
+
+    .card-text {
+        margin-bottom: 0.5rem; /* Space between text items */
+    }
+
+    .btn-sm {
+        font-size: 0.875rem; /* Slightly smaller font size for buttons */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Primary button color */
+        border-color: #007bff; /* Border color matching button color */
+        border-radius: 5px; /* Rounded corners */
+        padding: 0.5rem 1rem; /* Padding for button size */
+        font-size: 0.875rem; /* Font size */
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #004085; /* Darker border color on hover */
+        }
+
+    .btn-create-new {
+        background-color: #28a745; /* Green background for the button */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 0.5rem 1rem; /* Padding for button size */
+        font-size: 1rem; /* Font size */
+    }
+
+        .btn-create-new:hover {
+            background-color: #218838; /* Darker green on hover */
+            color: white; /* Maintain white text color on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+    /* Center align the button in the card body */
+    .card-body .btn-container {
+        text-align: center; /* Center align text inside container */
+    }
+
+    .btn-details {
+        background-color: #17a2b8; /* Teal background for details button */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 0.5rem 1rem; /* Padding for button size */
+        font-size: 0.875rem; /* Font size */
+    }
+
+        .btn-details:hover {
+            background-color: #138496; /* Darker teal on hover */
+            color: white; /* Maintain white text color on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+</style>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Orders</h2>
+
+    @*<p>
+        <a href="@Url.Action("Create", "Order_ItemsMVC")" class="btn btn-create-new">
+            Create New
+        </a>
+    </p>*@
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        Order ID: @Html.DisplayFor(modelItem => item.Order_Id)
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Item ID:</strong> @Html.DisplayFor(modelItem => item.Item_Id)</p>
+                        <p class="card-text"><strong>Product ID:</strong> @Html.DisplayFor(modelItem => item.Product_Id)</p>
+                        <p class="card-text"><strong>Quantity:</strong> @Html.DisplayFor(modelItem => item.Quantity)</p>
+                        <p class="card-text"><strong>List Price:</strong> @Html.DisplayFor(modelItem => item.List_Price)</p>
+                        <p class="card-text"><strong>Discount:</strong> @Html.DisplayFor(modelItem => item.Discount)</p>
+                        <div class="btn-container">
+                           @* @Html.ActionLink("Modify Order", "ShowAllOrderByOrderId", new { id = item.Order_Id }, new { @class = "btn btn-primary btn-sm" })*@
+                            @Html.ActionLink("Details", "ShowAllOrderByOrderId", new { id = item.Order_Id }, new { @class = "btn btn-details btn-sm mt-2" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

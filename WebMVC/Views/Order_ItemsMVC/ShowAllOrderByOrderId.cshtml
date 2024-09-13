@@ -1,0 +1,153 @@
+﻿@model IEnumerable<WebMVC.Models.Order_Items>
+
+@{
+    ViewBag.Title = "Show All Orders By OrderId";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            padding-top: 21px !important;
+            max-width: 1200px;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-links a {
+            margin-right: 5px;
+        }
+
+            .action-links a:last-child {
+                margin-right: 0;
+            }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .btn-custom:hover {
+                background-color: #218838;
+                color: white;
+            }
+
+            .btn-custom:focus, .btn-custom:active {
+                box-shadow: none;
+                outline: none;
+            }
+
+        .info-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 0.25rem;
+            margin-top: 20px;
+        }
+
+        .table-footer {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            padding: 10px;
+            border-top: 2px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Show All Orders By OrderId</h2>
+
+        <div class="mb-4">
+            <form action="@Url.Action("Create")" method="get">
+                <button type="submit" class="btn btn-custom">Create New</button>
+            </form>
+        </div>
+
+        @* Calculate total prices *@
+        @{
+            decimal totalWithoutDiscount = 0m;
+            decimal totalDiscounted = 0m;
+
+            foreach (var item in Model)
+            {
+                totalWithoutDiscount += item.List_Price * item.Quantity;
+                totalDiscounted += (item.List_Price - (item.List_Price * item.Discount)) * item.Quantity;
+            }
+
+            // Format totals
+            var formattedWithoutDiscount = $"₹ {totalWithoutDiscount:N2}";
+            var formattedDiscounted = $"₹ {totalDiscounted:N2}";
+        }
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Order_Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Item_Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Product_Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                    <th>@Html.DisplayNameFor(model => model.List_Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Discount)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Order_Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Item_Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Product_Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                        <td>₹ @Html.DisplayFor(modelItem => item.List_Price)</td>
+                        <td>@(item.Discount * 100) %</td>
+                        <td class="action-links">
+                            @Html.ActionLink("Edit", "GETEditOrderByItemId", new { orderId = item.Order_Id, itemId = item.Item_Id }, new { @class = "btn btn-warning btn-sm" })
+                            @Html.ActionLink("Details", "Details", new { orderId = item.Order_Id, itemId = item.Item_Id }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", new { orderId = item.Order_Id, itemId = item.Item_Id }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="table-footer">
+                    <td colspan="5" class="text-right">Base Price:</td>
+                    <td colspan="2">@formattedWithoutDiscount</td>
+                </tr>
+                <tr class="table-footer">
+                    <td colspan="5" class="text-right">Discounted Price:</td>
+                    <td colspan="2">@formattedDiscounted</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

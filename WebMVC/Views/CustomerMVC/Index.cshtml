@@ -1,0 +1,166 @@
+﻿@model IEnumerable<WebMVC.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var dropdownOptions = new List<SelectListItem>
+{
+        new SelectListItem { Value = "1", Text = "City" },
+        new SelectListItem { Value = "2", Text = "Order Date" },
+        new SelectListItem { Value = "3", Text = "ZipCode" },
+        new SelectListItem { Value = "4", Text = "Highest Order" }
+    };
+}
+
+<h2 class="mb-4">Customer Details</h2>
+
+@using (Html.BeginForm("Index", "CustomerMVC", FormMethod.Get))
+{
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Filter and Search Bar Container -->
+                <div class="d-flex align-items-center">
+                    <!-- Filter Dropdown -->
+                    <div class="me-2">
+                        @Html.DropDownList("filterOption", dropdownOptions, "Filter By", new { @class = "form-select form-select-sm" })
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="me-2 flex-grow-1">
+                        <input type="text" id="searchInput" name="searchTerm" placeholder="Search" class="form-control form-control-sm" />
+                    </div>
+
+                    <!-- Search Button -->
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-success btn-sm" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Customer_Id)</th>
+            <th>@Html.DisplayNameFor(model => model.First_Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Last_Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Street)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.State)</th>
+            <th>@Html.DisplayNameFor(model => model.Zip_code)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Customer_Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.First_Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Last_Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Street)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.State)</td>
+                <td>@Html.DisplayFor(modelItem => item.Zip_code)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Customer_Id }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Customer_Id }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Customer_Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var filterDropdown = document.getElementById('filterOption');
+        var searchInput = document.getElementById('searchInput');
+
+        filterDropdown.addEventListener('change', function () {
+            var selectedValue = this.value;
+
+            if (selectedValue === "4") {
+                searchInput.style.display = 'none';
+            } else {
+                searchInput.style.display = 'inline-block';
+
+                if (selectedValue === "1") {
+                    searchInput.placeholder = "Enter city";
+                    searchInput.name = "city";
+                } else if (selectedValue === "3") {
+                    searchInput.placeholder = "Enter ZIP Code";
+                    searchInput.name = "zipcode";
+                } else if (selectedValue === "2") {
+                    searchInput.placeholder = "YYYY-MM-DD";
+                    searchInput.name = "orderdate";
+                } else {
+                    searchInput.placeholder = "Search";
+                    searchInput.name = "searchTerm";
+                }
+            }
+        });
+
+        filterDropdown.dispatchEvent(new Event('change'));
+    });
+</script>
+
+<style>
+    .form-select, .form-control {
+        height: calc(1.5rem + 2px);
+        font-size: 0.75rem;
+    }
+
+    .btn-primary, .btn-success, .btn-warning, .btn-info, .btn-danger {
+        height: calc(1.5rem + 2px);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .table thead th {
+        background-color: #f8f9fa;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .d-flex {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .me-2 {
+        margin-right: 0.5rem;
+    }
+
+    .flex-grow-1 {
+        flex-grow: 1;
+    }
+
+    .flex-shrink-0 {
+        flex-shrink: 0;
+    }
+</style>

@@ -1,0 +1,326 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Carousel Styles */
+        #carouselExampleIndicators {
+            height: 80vh; /* Adjust height of the carousel */
+            width: 100%;
+        }
+
+            #carouselExampleIndicators .carousel-item {
+                height: 100%;
+                position: relative;
+            }
+
+                #carouselExampleIndicators .carousel-item img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; /* Ensures images cover the container */
+                }
+
+        .carousel-caption {
+            bottom: 20%;
+        }
+
+        .scroll-down-arrow {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: white;
+            font-size: 3rem;
+            z-index: 10; /* Ensure it is above other elements */
+        }
+
+        /* Button Styles */
+        .nav-link-custom {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            margin: 10px;
+        }
+
+            .nav-link-custom:hover {
+                background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+                transform: scale(1.05);
+            }
+
+            .nav-link-custom:active {
+                background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                transform: scale(0.98);
+            }
+
+        /* Section Styles */
+        .target-section {
+            /*background-color: #ffffff;*/
+            padding: 40px 20px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+            .target-section h2 {
+                margin-bottom: 20px;
+            }
+
+        /* Card Styles */
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card img {
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container Styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <!-- First Slide -->
+            <div class="carousel-item active">
+                <img src="https://img.freepik.com/free-photo/cool-motorcycle-presentation-outdoors_23-2150849599.jpg?t=st=1726039783~exp=1726043383~hmac=ce791d0c3a83da3566089822e8938375cfe538e1ef5e9745c0efbaa2459c8212&w=1060" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+                <a href="#target-section" class="scroll-down-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <!-- Second Slide -->
+            <!--<div class="carousel-item">
+                <img src="https://img.freepik.com/free-photo/young-handsome-man-riding-motorbike-countryside-road_176420-2468.jpg?t=st=1726051605~exp=1726055205~hmac=b02ec1e7ec18b22fae5886b59f1d2bad058a8b3fe47fa439e7e433cc5b5bfa91&w=1060" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second Slide Label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+                <a href="#target-section" class="scroll-down-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>-->
+            <!-- Third Slide -->
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/free-photo/cool-motorcycle-outdoors_23-2150849437.jpg?t=st=1726040248~exp=1726043848~hmac=cdd4b4c31a5b73175b7caa13030090daef2d320fec00996448d16abda16afe96&w=740" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+                <a href="#target-section" class="scroll-down-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    @*<div class="container mt-5">
+        <h2 class="text-center">A unique space for the whole family to browse their favourite books</h2>
+        <p class="text-center">The Book Corner is an independent and contemporary bookshop, selling a wide range of hand-picked fiction and non-fiction titles, with friendly and knowledgeable staff on hand to advise. With a dedicated children’s section, the team have created a unique space for the whole family to browse their favourite books. If they haven’t got it on the shelf they offer a free next-day ordering service.</p>
+        <div id="target-section" class="target-section">
+            <p><a class="nav-link-custom" href="#small-card">Visit The Bike Barn</a></p>
+        </div>
+    </div>*@
+
+<div class="container mt-5">
+    <div id="target-section" class="target-section">
+        <p><a class="nav-link-custom" href="#small-card">Visit The Bike Barn</a></p>
+    </div>
+</div>
+
+    <!-- Card Section -->
+    <div class="container mt-5" id="small-card">
+        <div class="row">
+            <!-- Brand Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/BrandMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-vector/brand-creation-concept-illustration_114360-12407.jpg?t=st=1726049954~exp=1726053554~hmac=c62298e8e8ece842279baf91289e78f06b65d313753c43d7615b4a6cc7453f70&w=360" class="card-img-top" alt="Brand">
+                        <div class="card-body">
+                            <h5 class="card-title">Brand</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Category Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/CategoryMVC/" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/premium-vector/series-pictures-motorcycles-with-word-scooter-front_1288234-2383.jpg?w=360" class="card-img-top" alt="Category">
+                        <div class="card-body">
+                            <h5 class="card-title">Category</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Customers Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/CustomerMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-photo/young-man-fixing-his-motorcycle_23-2148306669.jpg?t=st=1726050373~exp=1726053973~hmac=ddf44a797a9b31dce4fdcbdae7859f751adfbe160ee96e08914b71fb505a208a&w=360" class="card-img-top" alt="Customer">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Orders Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/OrderMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-vector/vehicle-sale-concept-illustration_114360-2082.jpg?t=st=1726053069~exp=1726056669~hmac=82915d069ba191492ac051979546d9575ad2580fa4524f83a8384ef4c2d06078&w=360" class="card-img-top" alt="Order">
+                        <div class="card-body">
+                            <h5 class="card-title">Order</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Order Items Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/Order_ItemsMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-photo/young-female-courier-with-delivery-coffee-food-yellow_179666-39034.jpg?t=st=1726050594~exp=1726054194~hmac=e5c74ef3790a118f7d9f872452cd38dde3cd0ebb2b98459db57e124c79c4a9b2&w=360" class="card-img-top" alt="Order Items">
+                        <div class="card-body">
+                            <h5 class="card-title">Order Items</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Products Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/ProductMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-photo/black-white-dirt-bikes_23-2151493506.jpg?t=st=1726050746~exp=1726054346~hmac=59f0abe5e3567cbe1001adea29f09e7bb2aaf7177644c03fec6d1d7f1b5c96f8&w=740" class="card-img-top" alt="Products">
+                        <div class="card-body">
+                            <h5 class="card-title">Products</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Stores Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/StoreMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/premium-vector/bike-shop-flat-illustration-eco-friendly-personal-city-transport-urban-transportation-gadget-concept_94753-2468.jpg" class="card-img-top" alt="Stores">
+                        <div class="card-body">
+                            <h5 class="card-title">Stores</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Staff Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/StaffMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-vector/business-people-teamwork-suit-clothes_40876-2435.jpg?t=st=1726052924~exp=1726056524~hmac=939c2dd9da5b409e038096a9469ae433cc71fd9ac938c5a4079b122ebc2c15c4&w=360" class="card-img-top" alt="Staff">
+                        <div class="card-body">
+                            <h5 class="card-title">Staff</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Stock Card -->
+            <div class="col-md-3 mb-4">
+                <a href="https://localhost:44338/StockMVC" class="text-decoration-none">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-photo/man-choosed-motorcycles-moto-shop-guy-black-jacket-manager-with-client_1157-43593.jpg?t=st=1726053186~exp=1726056786~hmac=8e2025d4a32911aef11dc6b292b25d691f2ff11b699e8d6dabfe4bdd3e629b23&w=360" class="card-img-top" alt="Stock">
+                        <div class="card-body">
+                            <h5 class="card-title">Stocks</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Popper.js for Bootstrap 4.x -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        $(document).ready(function () {
+            // Adjust scroll behavior to stop above the bookish corner button
+            $('.scroll-down-arrow').on('click', function (e) {
+                e.preventDefault(); // Prevent default anchor behavior
+                var target = $(this).attr('href'); // Get the target section
+                var scrollDistance = $(window).height() * 0.40; // 40% of viewport height
+                var offset = $(window).scrollTop() + scrollDistance; // Current scroll position + scroll distance
+                $('html, body').animate({ scrollTop: offset }, 600); // Smooth scroll
+            });
+
+            // Smooth scroll when clicking the "Visit The Bike Barn" button
+            $('a[href^="#small-card"]').on('click', function (e) {
+                e.preventDefault(); // Prevent default anchor behavior
+                var target = $(this).attr('href'); // Get the target section's id
+                var offset = $(target).offset().top - 100; // Scroll to just above the small card
+                $('html, body').animate({ scrollTop: offset }, 800); // Smooth scroll to target
+            });
+        });
+    </script>
+</main>

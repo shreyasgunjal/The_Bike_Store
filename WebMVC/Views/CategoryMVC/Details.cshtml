@@ -1,0 +1,92 @@
+﻿@model WebMVC.Models.Category
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    
+
+    <div class="category-details">
+        <h4>Category</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Category_Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category_Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category_Name)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="form-actions">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Category_Id }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .category-details {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dl-horizontal dt {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .dl-horizontal dd {
+        margin-bottom: 15px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+
+        .form-actions .btn {
+            margin-right: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+</style>

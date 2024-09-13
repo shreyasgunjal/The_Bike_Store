@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - The Bike Barn</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 120px; /* Adjust for fixed navbar */
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh; /* Ensure the body covers full height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            border-bottom: 3px solid #007bff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 2rem;
+            color: #ffffff !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #cce5ff !important;
+                text-decoration: underline;
+            }
+
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #007bff;
+            width: 100%;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
+
+        .container {
+            margin-top: 20px;
+            flex: 1;
+        }
+
+        .hero-section {
+            background: no-repeat center center;
+            background-color: gray;
+            background-size: cover;
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+
+            .hero-text h1 {
+                font-size: 4rem;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            }
+
+            .hero-text p {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3;
+                color: #ffffff;
+                transform: scale(1.05);
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">The Bike Barn</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")x
+            </div>
+        </div>
+    </nav>
+
+    <!--<div class="hero-section">
+        <div class="container hero-text">
+            <h1>Welcome to Bike Store</h1>
+            <p>Your one-stop shop for the best bikes and accessories.</p>-->
+            @*<a href="@Url.Action("Index", "OrderMVC")" class="btn btn-custom">Shop Now</a>*@
+        <!--</div>
+    </div>-->
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year -  The Bike Barn Application</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@model WebMVC.Models.Brand
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Create Brand</h2>
+
+    @using (Html.BeginForm("Create", "BrandMVC", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Brand_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Brand_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Brand_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary", style= "margin-top:10px" })
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts { 
+    @Scripts.Render("~/bundles/jqueryval")
+}

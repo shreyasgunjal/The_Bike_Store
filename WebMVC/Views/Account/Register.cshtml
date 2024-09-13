@@ -1,0 +1,50 @@
+﻿@model WebMVC.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<main class="container py-5" aria-labelledby="title">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <section class="bg-light p-4 rounded border border-primary shadow-lg">
+                <h2 id="title" class="text-center mb-4 text-primary">@ViewBag.Title</h2>
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Email, new { @class = "form-label text-primary" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control border-success bg-light text-dark" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Password, new { @class = "form-label text-primary" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control border-success bg-light text-dark" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label text-primary" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control border-success bg-light text-dark" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Name, new { @class = "form-label text-primary" })
+                        @Html.DropDownListFor(m => m.Name, ViewBag.Name as SelectList, "----Select Role----", new { @class = "form-control border-success bg-light text-dark" })
+                    </div>
+
+                    <div class="d-grid mb-3">
+                        <input type="submit" value="Register" class="btn btn-success btn-lg" />
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

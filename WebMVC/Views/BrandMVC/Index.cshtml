@@ -1,0 +1,123 @@
+﻿@model IEnumerable<WebMVC.Models.Brand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Custom styles for the card */
+    .card {
+        max-width: 350px; /* Set the maximum width for the card */
+        margin: 0 auto; /* Center the card horizontally */
+        border: 1px solid #ddd; /* Border around the card */
+        border-radius: 8px; /* Rounded corners for the card */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a slight elevation effect */
+    }
+
+    .card-img-container {
+        overflow: hidden;
+        width: 100%;
+        height: 200px; /* Adjust height as needed */
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the container */
+    }
+
+    .card-header {
+        background-color: #f8f9fa; /* Light background for header */
+        border-bottom: 1px solid #ddd; /* Border separating header from body */
+    }
+
+    .card-body {
+        padding: 1.25rem; /* Padding inside the card body */
+    }
+
+    .btn-sm {
+        font-size: 0.875rem; /* Slightly smaller font size for buttons */
+    }
+
+    /* Custom styles for the Create New button */
+    .btn-create-new {
+        background-color: #28a745; /* Green background for the button */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 0.5rem 1rem; /* Padding for button size */
+        font-size: 1rem; /* Font size */
+    }
+
+        .btn-create-new:hover {
+            background-color: #218838; /* Darker green on hover */
+            color: white; /* Maintain white text color on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+</style>
+
+@*@{ 
+    var imagelist = new List<string>() {
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    ,
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg"
+    };
+}*@
+    
+<div class="container mt-4">
+    <h2 class="mb-4">Brands</h2>
+
+    <p>
+        <a href="@Url.Action("Create", "BrandMVC")" class="btn btn-create-new">
+            Create New
+        </a>
+    </p>
+
+    <div class="row">
+        @{
+            var imagelist = new List<string>() {
+                "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+                "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+                "https://img.freepik.com/premium-photo/motorcycle-with-word-honda-front_862994-424908.jpg",
+                "https://img.freepik.com/premium-photo/way-summer-vacation-riding-motorcycle-down-empty-road-tour-route-explore-natural-wonders-world_28914-2904.jpg",
+                "https://img.freepik.com/premium-photo/three-wheeled-scooter-with-red-black-trim_979014-14764.jpg",
+                "https://img.freepik.com/premium-photo/motorcycle-parked-street-city-night_796580-2726.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/free-photo/high-angle-old-motorcycle-outdoors_23-2148703221.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/sportster-iron-883-genarated-by-ai_1011848-22663.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/sportster-iron-883-genarated-by-ai_1011848-22655.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/yellow-lightweight-touristic-enduro-motorcycle-3d-illustration_101266-18137.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid"
+            };
+           int i = 0;
+           foreach (var item in Model)
+           {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img src="@imagelist[i]" class="card-img" alt="Brand Image">
+                        </div>
+                        <div class="card-header">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Brand_Name)</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Brand ID: @Html.DisplayFor(modelItem => item.Brand_Id)</p>
+                            <div class="d-flex justify-content-between">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Brand_Id }, new { @class = "btn btn-warning btn-sm" })
+                                @Html.ActionLink("Details", "Details", new { id = item.Brand_Id }, new { @class = "btn btn-info btn-sm" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Brand_Id }, new { @class = "btn btn-danger btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+
+            }
+    </div>
+</div>
